@@ -1,8 +1,9 @@
 from tkinter import *
+from movie_Search import searchMovie
 
+# Window
 win = Tk()
-
-win.geometry("750x800")
+win.geometry("750x850") 
 win.minsize(500, 500)
 win.configure(bg="#ffffff")
 win.title("Climaz")
@@ -12,7 +13,16 @@ win.iconphoto(
     PhotoImage(file="Icon/picture_10650326.png")
 )
 
+def search_Movie():
+    # print("Hello World")
+    gen = mood_genre_input.get()
+    Result_box.insert(END,gen)
+    
 
+
+
+
+# Component
 heading_label = Label(
     win,
     text="Climaz",
@@ -42,7 +52,7 @@ mood_genre_input = Entry(
     font=("Helvetica Neue", 16),
     bd=0,
     insertbackground="#1d1d1f",
-    highlightthickness=0,
+    highlightthickness=1,
     highlightcolor="grey"
 )
 mood_genre_input.pack(ipady=10, padx=12)
@@ -59,7 +69,8 @@ Result_box = Text(
     bd=0,
     padx=14,
     pady=14,
-    highlightthickness=0
+    highlightthickness=1,
+    highlightcolor="black"
 )
 Result_box.pack(fill=BOTH, expand=True, padx=50)
 
@@ -103,6 +114,18 @@ avg_btn = Button(
     height=1,
     # cursor="c "
 )
+fav_btn = Button(
+    action_frame,
+    text="❤️",
+    bg="#f5f5f7",
+    fg="#e11d48",
+    font=("Helvetica Neue", 18),
+    bd=0,
+    width=3,
+    height=1
+)
+fav_btn.pack(side=LEFT, padx=10)
+
 avg_btn.pack(side=LEFT, padx=10)
 
 def hover_in(e):
@@ -132,6 +155,7 @@ sbtn = Button(
     bd=0,
     padx=22,
     pady=14,
+    command=search_Movie
     # cursor="hand2"
 )
 sbtn.pack(pady=(10, 30))
